@@ -1,0 +1,258 @@
+#rotation
+{
+	height: 1.8rem;
+	background-color:#67B168;
+	text-align: center;
+	left: 0;
+	/*line-height: 1.8rem;*/
+	overflow: hidden;
+	/*margin: 0;
+	padding: 0;*/
+
+}
+
+.container-fluid a
+{
+    padding:0;
+	margin-top: 0.05rem;
+	margin-left: 0.15rem;
+}
+.container-fluid a img
+{
+    border:0
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 0.7rem;
+}
+.container-fluid dl dt
+{
+	height: 0.6rem;
+}
+.row dl dd{
+	height: 0.50rem;
+	width:100%;
+	white-space:nowrap;
+    margin-bottom: 0;
+	fond-size:0.2rem;
+	text-align:center;
+	line-height: 0.5rem;
+}
+.row dl{margin:0;
+    padding:0;
+}
+#mainrotation{
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+}
+.swiper-wrapper img{
+	height: 100%;
+	width:100%;
+}
+
+#middleplace
+{
+
+	margin-top: 0.2rem;
+	padding: 0;
+	position: relative;
+}
+#mip{
+	/*background-color: black;*/
+	position: absolute;
+	height: 2rem;
+	width: 47%;
+	left: 2%;
+}
+#miptit{
+	background-color:aquamarine;
+	height: 0.3rem;
+}
+#miptittime{
+	position: absolute;
+	right: 0;
+	top: 0;
+	background-color: deeppink;
+}
+#mipmain a
+{
+	/*margin-left: 0.1rem;*/
+	height: 1.7rem;
+	/*top:0.2rem;*/
+	margin: 0;
+	padding: 0;
+}
+#mipmain dl dt{
+	height: 1.4rem;
+}
+#mipmain img{
+
+	width: 96%;
+	height: 100%;
+}
+#mipmain dl dd{
+	height: 0.3rem;
+	text-align: center;
+	line-height:0.3rem ;
+}
+
+#mip1{
+	position: absolute;
+	height: 2rem;
+	width: 47%;
+	right: 2%;
+}
+#mip1tit{
+	background-color:aquamarine;
+	height: 0.3rem;
+}
+#mip1main a
+{
+	/*margin-left: 0.1rem;*/
+	height: 1.7rem;
+	/*top:0.2rem;*/
+	margin: 0;
+	padding: 0;
+}
+#mip1main dl dt{
+	height: 1.4rem;
+}
+#mip1main img{
+
+	width: 96%;
+	height: 100%;
+}
+#mip1main dl dd{
+	height: 0.3rem;
+	text-align: center;
+	line-height:0.3rem ;
+}
+
+
+#mip2{
+	/*background-color: black;*/
+	position: absolute;
+	top: 2.1rem;
+	height: 2rem;
+	width: 47%;
+	left: 2%;
+	overflow: hidden;
+	margin: 0;
+}
+#mip2tit{
+	background-color:aquamarine;
+	height: 0.3rem;
+}
+#mip2main a
+{
+	/*margin-left: 0.1rem;*/
+	height: 1.7rem;
+	/*top:0.2rem;*/
+	margin: 0;
+	padding: 0;
+}
+#mip2main dl{
+	margin: 0;
+}
+#mip2main dl dt{
+	height: 1.4rem;
+}
+#mip2main img{
+
+	width: 96%;
+	height: 100%;
+}
+#mip2main dl dd{
+	height: 0.3rem;
+	text-align: center;
+	line-height:0.3rem ;
+}
+#mip3{
+	/*background-color: black;*/
+	position: absolute;
+	top: 2.1rem;
+	height: 2rem;
+	width: 47%;
+	right: 2%;
+}
+#mip3tit{
+	background-color:aquamarine;
+	height: 0.3rem;
+}
+#mip3main a
+{
+	/*margin-left: 0.1rem;*/
+	height: 1.7rem;
+	/*top:0.2rem;*/
+	margin: 0;
+	padding: 0;
+}
+#mip3main dl dt{
+	height: 1.4rem;
+}
+#mip3main img{
+
+	width: 96%;
+	height: 100%;
+}
+#mip3main dl dd{
+	height: 0.3rem;
+	text-align: center;
+	line-height:0.3rem ;
+}
+#bottonplace
+{
+	margin-top: 4.5rem;
+	/*margin-bottom: 0;*/
+	padding: 0;
+}
+#btmian{
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+    margin-bottom:0.2rem
+}
+#bttitle{
+	height: 0.6rem;
+	background-color: #67B168;
+	font-size: 0.3rem;
+	text-align: center;
+	line-height: 0.6rem;
+}
+#btbt{
+	height:3.4rem;
+
+
+}
+#btbta{
+	height: 100%;
+	margin-bottom: 0;
+	margin-top:0.1rem
+}
+#btbta dl{
+	margin-bottom: 0;
+}
+#btbt a dl dt{
+	height: 2.4rem;
+}
+#btbt img{
+	height: 100%;
+	width: 100%;
+}
+#btbtdd2{
+	background-color: #F5E79E;
+	height: 0.4rem;
+	font-size: 0.3rem;
+	text-align: left;
+}
+#btbtdd1{
+	text-overflow:ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	font-size:0.25rem ;
+	height:0.55rem ;
+	/*line-height:0.55rem*/
+
+}
+

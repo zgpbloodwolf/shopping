@@ -1,0 +1,233 @@
+html, body{
+	width: 100%;
+	height: 100%;
+}
+body{
+	margin: 0;
+	padding: 0;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+#title
+{
+	width: 100%;
+	height: 2rem;
+	/*position: fixed;
+	display: flex;*/
+	background-image: linear-gradient(to bottom,#FF0000,#FF1493,#FFD700,#F0E68C);
+}
+.container-fluid{
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+.row{
+	width: 100%;
+	height: 2rem;
+	margin: 0;
+	padding: 0;
+}
+#titleimage{
+	margin: 0;
+	padding: 0;
+
+	height: 2rem;
+	padding-top: 0.2rem;
+	padding-bottom: 0.2rem;
+	border: 0;
+	overflow:hidden;
+
+}
+#titleimage a{
+	margin: 0;
+	padding: 0;
+	border: 0;
+	height: 100%;
+	width: 100%;
+}
+#titleimage img{
+	width: 100%;
+	height: 100%;
+
+	/*background-color: red;*/
+}
+#titlemiddle{
+	height: 2rem;
+	margin: 0;
+	padding: 0;
+}
+#titlemiddle dl{
+	margin: 0;
+	padding: 0;
+	height: 2rem;
+	/*text-align: center;
+	line-height: 2rem;*/
+}
+#titlemiddle dl dt{
+	height: 1rem;
+	text-align: center;
+	line-height: 1rem;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+#titlemiddle dl dt a{
+	font-size: 0.4rem;
+	width: 100%;
+	height: 1rem;
+	padding: 0;
+	margin: 0;
+}
+#titlemiddle dl dd{
+	color: red;
+	margin-left: 0.2rem;
+	font-size: 0.25rem;
+}
+#titleright{
+	height: 2rem;
+	padding: 0;
+	margin: 0;
+}
+#titleright a{
+	height: 2rem;
+	width: 100%;
+}
+#titleright a div{
+	padding-top: 0.8rem;
+}
+#titleright a div span{
+	font: "微软雅黑";
+	font-size: 0.6rem;
+	color: red;	
+}
+
+
+#mainmain{
+	/*margin-top: 2rem;*/
+	height: 6rem;
+}
+#maimmaintop{
+	margin-top: 0.1rem;
+	height: 1.15rem;
+	overflow: hidden;
+	border: 0.01rem dashed #CCCCCC;
+}
+#maimmaintop a{
+	height: 1rem;
+	margin: 0;
+	padding: 0;
+	margin-left: 0.1rem;
+	margin-top: 0.1rem;
+	border: 0;
+}
+#maimmaintop a dl dt{
+	height: 0.6rem;
+	/*background-color: red;*/
+	border: 0;
+	
+}
+#maimmaintop a dl dt img{
+	height: 0.6rem;
+	width: 100%;
+	border: 0;
+}
+#maimmaintop a dl dd{
+	height: 0.4rem;
+	text-align: center;
+	line-height: 0.4rem;
+	border: 0;
+}
+#maimmainmiddle{
+	margin-top: 0.1rem;
+	height: 1.15rem;
+	overflow: hidden;
+	border: 0.01rem dashed #CCCCCC;
+}
+#maimmainmiddle a{
+	height: 1rem;
+	margin: 0;
+	padding: 0;
+	margin-left: 0.1rem;
+	margin-top: 0.1rem;
+	border: 0;
+}
+#maimmainmiddle a dl dt{
+	height: 0.6rem;
+	text-align: center;
+	line-height: 0.6rem;
+	/*background-color: red;*/
+	border: 0;
+	
+}
+#maimmainmiddle a dl dd{
+	height: 0.4rem;
+	text-align: center;
+	line-height: 0.4rem;
+	border: 0;
+}
+#maimmainmiddle a dl dt img{
+	height: 0.6rem;
+	width: 100%;
+	border: 0;
+}
+footer
+{
+	width: 100%;
+	height: 1rem;
+	font-size: 0.2rem;
+	z-index: 999999;
+	position: fixed;
+	display: flex;
+
+}
+footer{
+	bottom: 0;
+	left: 0;
+	background-color:#D5D5D5;
+	border-top: 1px solid #0F0F0F;
+}
+footer a
+{
+	display: block;
+	width: 25%!important;
+	text-align: center;
+	overflow: hidden!important;
+}
+footer dl dt
+{
+	height: 0.5rem;
+	padding-top: 0.22rem;
+	position: relative;
+}
+footer dl dd{
+	width: 100%;
+	height: 0.70rem;
+	line-height: 0.6rem;
+
+}
+footer dl dt img{
+	width: 0.4rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

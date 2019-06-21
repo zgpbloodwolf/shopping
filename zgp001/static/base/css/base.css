@@ -1,0 +1,102 @@
+html, body{
+	width: 100%;
+	height: 100%;
+}
+body{
+	margin: 0;
+	padding: 0;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+header, footer
+{
+	width: 100%;
+	height: 1rem;
+	font-size: 0.2rem;
+	z-index: 999999;
+	position: fixed;
+	display: flex;
+}
+footer{
+	bottom: 0;
+	left: 0;
+	background-color:#D5D5D5;
+	border-top: 1px solid #0F0F0F;
+}
+footer a
+{
+	display: block;
+	width: 25%!important;
+	text-align: center;
+	overflow: hidden!important;
+}
+footer dl dt
+{
+	height: 0.5rem;
+	padding-top: 0.22rem;
+	position: relative;
+}
+footer dl dd{
+	width: 100%;
+	height: 0.70rem;
+	line-height: 0.6rem;
+	
+}
+footer dl dt img{
+	width: 0.4rem;
+}
+header{
+	border-bottom: 1px solid #0F0F0F;
+	background-color: #EC971F;
+	text-align: center;
+	line-height:0.8rem ;
+	top: 0;
+	right: 0;
+}
+header a{
+	position: absolute;
+	width: 15%!important;
+	text-align: center;
+	overflow: hidden!important;
+	right: 0;
+}
+header dl dt
+{
+	height: 0.5rem;
+	padding-top: 0.22rem;
+	position: relative;
+}
+header dl dd{
+	width: 100%;
+	height: 0.70rem;
+	line-height: 0.6rem;
+}
+header dl dt img{
+	width: 0.4rem;
+}
+#locol
+{
+	width: 85%!important;
+	overflow:hidden;
+}
+#locol img
+{
+	width: 85%!important;
+	height:1rem ;
+}
+#main{
+	margin-top: 1rem;
+
+
+	overflow-y: auto;
+	height:8.5rem
+}
+
+
+
+
+
+
+
+
+

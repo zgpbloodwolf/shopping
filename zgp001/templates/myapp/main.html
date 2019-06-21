@@ -1,0 +1,153 @@
+{% extends 'myapp/base.html'%}
+{% load static from staticfiles %}
+{%block js%}
+<link rel="stylesheet" type="text/css" href="{%static 'main/css/main.css'%}"/>
+<script src="{% static 'main/js/main.js' %}"
+            type="text/javascript" charset="utf-8"></script>
+{%endblock%}
+{% block main %}
+        	<div id="rotation">
+        		<div class="swiper-container" id="mainrotation">
+    				<div class="swiper-wrapper">
+						<!--轮播图展示-->
+                        {%for rot in rotlist %}
+      					<div class= "swiper-slide">
+                            <a href="{{rot.ro_co}}"> <img src="/{{rot.ro_image}}"></a>
+      					</div>
+                        {%endfor%}
+    				</div>
+    				<div class="swiper-pagination"></div>
+  				</div>
+        	</div>
+        	<div class="container-fluid">
+        		<div class="row">
+                    <!--特殊商品展示-->
+                    {% for meau in meaulist%}
+		        	<a href="{{meau.m_co}}" class="col-md-2 col-sm-2 col-xs-2 thumbnail">
+		                <dl>
+		                	<dt>
+								<img src="/{{meau.m_image}}" />
+		                	</dt>
+		                	<dd><p>
+								{{meau.m_name}}</p></dd>
+		                </dl>
+		            </a>
+                    {%endfor%}
+            	</div>
+            </div>
+			<div id="middleplace">
+          		<div id="mip">
+          			<div id="miptit">
+          				<span>京东秒杀
+						</span>
+						<div id="miptittime">
+							<span >10点场
+							</span>
+						</div>
+          			</div>
+          			<div id="mipmain">
+                        {%for jdms in jdmslist%}
+                            <a href="" class="col-md-4 col-sm-4 col-xs-4 thumbnail ">
+                                <dl>
+                                    <dt>
+                                        <span>
+                                            <img class="img-circle" src="/{{jdms.jdms_image}}" />
+                                        </span>
+                                    </dt>
+                                    <dd>￥{{jdms.jdms_pice}}
+                                    </dd>
+                                </dl>
+                            </a>
+                        {%endfor%}
+          			</div>
+          		</div>
+          		<div id="mip1">
+          			<div id="mip1tit">
+          				<span>发现好货 </span>
+          			</div>
+          			<div id="mip1main">
+                        {% for fxhh in fxhhlist%}
+                            <a href="" class="col-md-6 col-sm-6 col-xs-6 thumbnail ">
+                                <dl>
+                                    <dt>
+                                        <span>
+                                            <img class="img-circle" src="/{{fxhh.fxhh_image}}" />
+                                        </span>
+                                    </dt>
+                                    <dd>￥{{fxhh.fxhh_pice}}</dd>
+                                </dl>
+                            </a>
+                        {%endfor%}
+          			</div>
+				</div>
+          		<div id="mip2">
+          			<div id="mip2tit">
+          				<span>品牌秒杀 </span>
+          			</div>
+          			<div id="mip2main">
+                        {%for ppms in ppmslist%}
+                            <a href="" class="col-md-6 col-sm-6 col-xs-6 thumbnail ">
+                                <dl>
+                                    <dd>{{ppms.ppms_name}}</dd>
+                                    <dt>
+                                    <span>
+                                        <img class="img-circle" src="/{{ppms.ppms_image}}" />
+                                    </span>
+                                    </dt>
+                                </dl>
+                            </a>
+                        {%endfor%}
+          			</div>
+				</div>
+          		<div id="mip3">
+          			<div id="mip3tit">
+          				<span>会买专辑 </span>
+          			</div>
+          			<div id="mip3main">
+                        {%for hmzj in hmzjlist%}
+                            <a href="" class="col-md-6 col-sm-6 col-xs-6 thumbnail ">
+                                <dl>
+                                    <dt>
+                                        <span>
+                                            <img class="img-circle" src="/{{hmzj.hmzj_image}}" />
+                                        </span>
+                                    </dt>
+                                    <dd>￥{{hmzj.hmzj_pice}}</dd>
+                                </dl>
+                            </a>
+		            	{%endfor%}
+          			</div>
+          		</div>
+         	</div>
+<!--菜单商品-->
+          	<div id="bottonplace">
+                <!--商品种类列表-->
+				{%for commodotykind in commodityKindlist%}
+          			<div id="btmian">
+          				<div id="bttitle">
+          					<a href="{{commodotykind.ct_id}}">{{commodotykind.ct_name}}</a>
+          				</div>
+          				<div id="btbt">
+                            <!--商品列表-->
+							{%for commodoty in commoditylist%}
+								{% if commodotykind.ct_id == commodoty.co_kind%}
+									<a href="{{commodoty.co_id}}" class="col-md-6 col-sm-6 col-xs-6 thumbnail " id="btbta">
+										<dl>
+											<dt>
+												<img class="img-circle" src="/{{commodoty.co_image }}" />
+											</dt>
+											<dd id="btbtdd1">
+												<span>{{commodoty.co_name}}</span>
+											</dd>
+											<dd id="btbtdd2">￥{{commodoty.co_pice}}
+											</dd>
+										</dl>
+									</a>
+								{%endif%}
+							{%endfor%}
+          				</div>
+
+          			</div>
+				{%endfor%}
+     		</div>
+{% endblock main %}

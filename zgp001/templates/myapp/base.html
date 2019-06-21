@@ -1,0 +1,96 @@
+{% load static from staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <link rel="stylesheet" type="text/css" href="{% static 'base/css/bootstrap.min.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'base/css/swiper.min.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'base/css/base.css' %}"/>
+    <script src="{% static 'base/js/jquery-3.3.1.min.js' %}"
+            type="text/javascript" charset="utf-8"></script>
+    <script src="{% static 'base/js/bootstrap.min.js' %}"
+            type="text/javascript" charset="utf-8"></script>
+    <script src="{% static 'base/js/swiper.js' %}"
+            type="text/javascript" charset="utf-8"></script>
+    <script src="{% static 'base/js/base.js' %}"
+            type="text/javascript"></script>
+    {% block js%}
+    {% endblock js%}
+</head>
+<body>
+    <div id="bo">
+        <header>
+        	<div id="locol">
+        		<img src="{%static 'base/img/logol.png' %}">
+        	</div>
+            <a class="search" href="">
+                <dl>
+                	<dt>
+                		<span>
+                			<img src="{%static 'base/img/search.png' %}">
+                		</span>
+                	</dt>
+                	<dd>搜索</dd>
+                </dl>
+
+            </a>
+        </header>
+        <div id='main'>
+
+        	{%block main%}
+            {%endblock main%}
+
+
+        </div>
+        <footer>
+            <a class="home" href="{%url 'app:main'%}">
+                <dl>
+                	<dt>
+                		<span>
+                            <!--<img src="{% static 'myapp/img/a.png'%}">-->
+                			<img src="{% static 'base/img/mine.png'%}" />
+                		</span>
+                	</dt>
+                	<dd>主页</dd>
+                </dl>
+
+            </a>
+             <a class="ken" href="{%url 'app:ken'%}">
+                <dl>
+                	<dt>
+                		<span>
+                            <img src="{%static 'base/img/ken.png' %}">
+                        </span>
+                	</dt>
+                	<dd>闪送超市</dd>
+                </dl>
+
+            </a>
+             <a class="car" href="{%url 'app:car'%}">
+                <dl>
+                	<dt>
+                		<span>
+                            <img src="{%static 'base/img/car.png' %}">
+                        </span>
+                	</dt>
+                	<dd>购物车</dd>
+                </dl>
+
+            </a>
+             <a class="mean" href="{%url 'app:mean'%}">
+                <dl>
+                	<dt>
+                		<span>
+                            <img src="{%static 'base/img/mean.png' %}">
+                        </span>
+                	</dt>
+                	<dd>我的</dd>
+                </dl>
+
+            </a>
+        </footer>
+    </div>
+</body>
+</html>

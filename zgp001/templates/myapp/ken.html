@@ -1,0 +1,91 @@
+{% extends 'myapp/base.html'%}
+{% load static from staticfiles %}
+{%block js%}
+<link rel="stylesheet" type="text/css" href="{%static 'ken/css/ken.css'%}"/>
+<script src="{% static 'ken/js/ken.js' %}"
+            type="text/javascript" charset="utf-8"></script>
+{%endblock%}
+{% block main %}
+        		<div id="mainleft" class="col-xs-3 col-sm-3 col-md-3">
+        			<div class="btn-group-vertical" role="group" aria-label="...">
+  						<span onclick="ajaxre('京东超市')" class="btn btn-default">京东超市</span>
+  						<span onclick="ajaxre('电脑')" class="btn btn-default">电脑</span>
+  						<span onclick="ajaxre('饮料')" class="btn btn-default">饮料</span>
+  						<span onclick="ajaxre('钱包')" class="btn btn-default">钱包</span>
+  						<span onclick="ajaxre('男装')" class="btn btn-default">男装</span>
+  						<span onclick="ajaxre('女装')" class="btn btn-default">女装</span>
+  						<span onclick="ajaxre('男鞋')" class="btn btn-default">男鞋</span>
+  						<span onclick="ajaxre('女鞋')" class="btn btn-default">女鞋</span>
+  						<span onclick="ajaxre('内衣配饰')" class="btn btn-default">内衣配饰</span>
+  						<span onclick="ajaxre('箱包手袋')" class="btn btn-default">箱包手袋</span>
+  						<span onclick="ajaxre('美妆护肤')" class="btn btn-default">美妆护肤</span>
+  						<span onclick="ajaxre('个护清洁')" class="btn btn-default">个护清洁</span>
+  						<span onclick="ajaxre('钟表珠宝')" class="btn btn-default">钟表珠宝</span>
+  						<span onclick="ajaxre('手机数码')" class="btn btn-default">手机数码</span>
+        		</div>
+        		</div>
+        		<div id="mainright" class="col-xs-9 col-sm-9 col-md-9">
+					<div class="btn-group" role="group" aria-label="" id="rightmenu">
+  						<div class="btn-group col-xs-4 col-sm-4 col-md-4" role="group">
+    						<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+     							 	综合排序
+							    <span class="caret"></span>
+							</button>
+						    <ul class="dropdown-menu">
+						      	<li><a href="#">销量由低到高</a></li>
+						      	<li><a href="#">销量由高到低</a></li>
+						    </ul>
+						 </div>
+  						<div class="btn-group col-xs-4 col-sm-4 col-md-4" role="group">
+    						<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+     							 	价格排序
+							    <span class="caret"></span>
+							</button>
+						    <ul class="dropdown-menu">
+						      	<li><a href="#">升序</a></li>
+						      	<li><a href="#">降序</a></li>
+						    </ul>
+						 </div>
+  						<div class="btn-group col-xs-4 col-sm-4 col-md-4" role="group">
+    						<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+     							 	待定
+							    <span class="caret"></span>
+							</button>
+						    <ul class="dropdown-menu">
+						      	<li><a href="#">待定1</a></li>
+						      	<li><a href="#">待定2</a></li>
+						    </ul>
+						 </div>
+
+					</div>
+					<div id="mainmain" >
+						{%for com in commoditylist%}
+							<div id="mainmainleft" class=" col-xs-5 col-sm-5 col-md-5">
+								<a href="" class="thumbnail">
+									<img src="/{{com.co_image}}"/>
+								</a>
+							</div>
+							<div id="mainmainright" class=" col-xs-7 col-sm-7 col-md-7">
+								<a href="{{com.co_id}}">
+                                    {{com.co_brief_introduction}}
+									<!--<div id="mainmainleftname">-->
+									<!--</div></a>-->
+								</a>
+								<div id="mainmainleftprice" class=" col-xs-6 col-sm-6 col-md-6">
+									<a href="{{com.co_id}}">
+									<span style="font-size: 0.3rem;">￥{{com.co_pice}}</span>
+									<br />
+									<span style="font-size: 0.2rem;">11万好评</span>
+									</a>
+								</div>
+								<div id="change" class=" col-xs-6 col-sm-6 col-md-6">
+									<input type="button"  onclick="jianchange({{com.co_id}})"class="jianchange" value="-" />
+									<span id="{{com.co_id}}">0</span>
+									<input type="button" onclick="addchange({{com.co_id}})" class="addchange" value="+" />
+								</div>
+							</div>
+						{%endfor%}
+
+					</div>
+				</div>
+{% endblock main %}
