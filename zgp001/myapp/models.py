@@ -77,10 +77,23 @@ class Hmzjb(models.Model):
     hmzj_pice=models.DecimalField(max_digits=10,decimal_places=2)
     class Meta:
         db_table = 'hmzj'
-
-
-
-
+#用户信息
+class Userinf(models.Model):
+    username = models.CharField(max_length=20,primary_key=True)
+    userpassword= models.CharField(max_length=15)
+    userphone = models.IntegerField()
+    token = models.CharField(max_length=50)
+    class Meta:
+        db_table = 'userin'
+#购物车
+class Usercar(models.Model):
+    car_user = models.CharField(max_length=20)
+    car_co = models.IntegerField()
+    car_number = models.IntegerField()
+    #选中状态
+    car_sele = models.IntegerField()
+    #商品价格
+    car_money = models.DecimalField(max_digits=10,decimal_places=2)
 
 
 
