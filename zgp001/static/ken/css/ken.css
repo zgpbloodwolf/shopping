@@ -2,7 +2,7 @@
 #main{
     position: absolute;
 	height: 8rem;
-	margin-top:3rem
+	margin-top:3rem;
 	overflow: hidden;
 	/*background-color: blueviolet;*/
 }
@@ -27,11 +27,10 @@
 }
 #mainright button{
 	height: 0.5rem;
-	padding: 0rem;
+	padding: 0;
 	margin-right: 0.1rem;
 	border: 0;
 	background-color: greenyellow;
-
 }
 #rightmenu{
 	width:80%;
