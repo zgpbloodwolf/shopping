@@ -1,6 +1,12 @@
+#main{
+	margin-top: 1rem;
+	height:8rem;
+    overflow: hidden;
+    position: absolute;
+}
 #mainmain{
-	height: 7.5rem;
-	margin-top: 0.5rem;
+	height: 6.8rem;
+	margin-top: 0.2rem;
 	overflow: auto;
 }
 #rowr{
@@ -76,7 +82,29 @@
     border-radius: 50%;
     line-height: 0.3rem;
     margin-left: 0.1rem;
-    /*margin-right:0rem ;*/
-
-;
+}
+#jiesuan{
+    z-index: 999999;
+    height: 1rem;
+    /*background-color:red;*/
+    width: 100%;
+    font-size: 0.3rem;
+    line-height: 1rem;
+    margin: 0;
+    padding: 0;
+}
+#jiesuanname{
+    margin: 0;
+    padding: 0;
+    padding-left: 0.5rem;
+}
+#jiesuanmoney{
+    margin: 0;
+    padding: 0;
+}
+#jiesuanacc{
+    background-color: red;
+    margin: 0;
+    padding: 0;
+    padding-left: 0.5rem;
 }
