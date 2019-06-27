@@ -68,8 +68,6 @@
 							<div id="mainmainright" class=" col-xs-7 col-sm-7 col-md-7">
 								<a href="{{com.co_id}}">
                                     {{com.co_brief_introduction}}
-									<!--<div id="mainmainleftname">-->
-									<!--</div></a>-->
 								</a>
 								<div id="mainmainleftprice" class=" col-xs-6 col-sm-6 col-md-6">
 									<a href="{{com.co_id}}">
@@ -79,9 +77,16 @@
 									</a>
 								</div>
 								<div id="change" class=" col-xs-6 col-sm-6 col-md-6">
-									<input type="button"  onclick="jianchange({{com.co_id}})"class="jianchange" value="-" />
-									<span id="{{com.co_id}}">0</span>
-									<input type="button" onclick="addchange({{com.co_id}})" class="addchange" value="+" />
+                                    <input type="button" onclick="jianchange('{{com.co_id}}')" class="jianchange" value="-" />
+                                    <!--{% if com.co_id in number.keys%}-->
+									    <!--<span id="{{com.co_id}}">{{number.value}}</span>-->
+                                    <!--{%else%}-->
+                                        <!--<span id="{{com.co_id}}">0</span>-->
+                                    <!--{% endif %}-->
+                                    <span id="{{com.co_id}}">0</span>
+                                    <input type="button" onclick="addchange('{{com.co_id}}')" class="addchange" value="+" />
+
+
 								</div>
 							</div>
 						{%endfor%}
