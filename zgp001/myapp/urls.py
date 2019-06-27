@@ -8,6 +8,8 @@ urlpatterns = [
     url('^mean/$',views.mean,name='mean'),
     url('^sign/$',views.sign,name='sign'),
     url('^register/$',views.register,name='register'),
-    url('^aaa/$',views.kenview,name='aaa')
+    url('^aaa/$',views.kenview,name='aaa'),
+    url('^addchange/$',views.addchange,name='addchange'),
+    url('^jianchange/$',views.jianchange,name='jianchange'),
     # url('main/[A-Za-z_0-9]{0.9}.jpg/$',views.pic)
 ]
