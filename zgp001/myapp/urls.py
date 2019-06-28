@@ -11,5 +11,8 @@ urlpatterns = [
     url('^aaa/$',views.kenview,name='aaa'),
     url('^addchange/$',views.addchange,name='addchange'),
     url('^jianchange/$',views.jianchange,name='jianchange'),
+    url('^chosenchange/$',views.chosenchange,name='chosenchange'),
+    url('^jiesuan/$',views.jiesuan,name='jiesuan'),
+    url('^toreceived/$',views.toreceived,name='toreceived')
     # url('main/[A-Za-z_0-9]{0.9}.jpg/$',views.pic)
 ]
