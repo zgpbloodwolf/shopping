@@ -1,0 +1,69 @@
+html,body{
+    width: 100%;
+    height: 100%;
+}
+body{
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+#main{
+    height: 100%;
+    overflow: auto;
+    margin-top: 4.2rem;
+}
+#header{
+    background-color: red;
+    z-index: 999999;
+    font-size: 3rem;
+    height: 4rem;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+#mainmain{
+    width: 100%;
+    height: 100%;
+}
+#mainmainleft{
+    height: 15rem;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 1rem;
+}
+#mainmainleft a{
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+}
+#mainmainright{
+    height: 15rem;
+    margin: 0;
+    padding: 0;
+    padding-top: 1rem;
+    font-size:2rem;
+    margin-bottom: 1rem;
+}
+#mainmainright a{
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2 ;
+    overflow: hidden;
+}
+#mainmainleftprice {
+    font-size: 2rem;
+    margin: 0;
+    padding: 0;
+}
+#queren{
+    font-size: 1.5rem;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    right: 1rem;
+    height: 3rem;
+    margin-top: 2rem;
+}
