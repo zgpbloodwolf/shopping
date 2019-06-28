@@ -88,12 +88,37 @@ class Userinf(models.Model):
 #购物车
 class Usercar(models.Model):
     car_user = models.CharField(max_length=20)
+    #商品
     car_co = models.IntegerField()
+    #商品数量
     car_number = models.IntegerField()
     #选中状态
     car_sele = models.IntegerField()
     #商品价格
     car_money = models.DecimalField(max_digits=10,decimal_places=2)
+    car_image = models.ImageField(default='aaa')
+    co_brief_introduction = models.CharField(max_length=50,default='a')
+    class Meta:
+        db_table = 'usecar'
+class Order(models.Model):
+    #用户名
+    car_user = models.CharField(max_length=20)
+    #商品
+    car_co = models.IntegerField()
+    #购买数量
+    car_number = models.IntegerField()
+    #商品总价
+    car_money = models.DecimalField(max_digits=10,decimal_places=2)
+    #商品图片
+    car_image = models.ImageField(default='aaa')
+    #商品介绍
+    co_brief_introduction = models.CharField(max_length=50,default='a')
+    #商品状态
+    or_sele = models.IntegerField()
+    #评价状态
+    or_evaluate= models.IntegerField()
+    class Meta:
+        db_table = 'order'
 
 
 
