@@ -1,10 +1,52 @@
+{% load static from staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>待收货</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <link rel="stylesheet" type="text/css" href="{% static 'torecebied/css/toreceived.css'%}">
+    <link rel="stylesheet" type="text/css" href="{% static 'base/css/bootstrap.min.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'base/css/swiper.min.css' %}"/>
+    <script type="text/javascript" src="{%static 'torecebied/js/torecebied.js'%}"></script>
 </head>
 <body>
-$END$
+    <div id="header">
+         <a href="/mean/">
+                <span class="glyphicon glyphicon-chevron-left" ></span>
+         </a>
+     </div>
+    <div id="main">
+        <div id="mainmain">
+            {%if torelist%}
+                {%for com in torelist%}
+                    <div id="mainmainleft" class=" col-xs-5 col-sm-5 col-md-5">
+                        <a href="" class="thumbnail">
+                        <img src="/{{com.car_image}}"/>
+                        </a>
+                    </div>
+                    <div id="mainmainright" class=" col-xs-7 col-sm-7 col-md-7">
+                        <a href="{{com.car_co}}">
+                                            {{com.co_brief_introduction}}
+                        </a>
+                        <div id="mainmainleftprice" class=" col-xs-6 col-sm-6 col-md-6">
+                            <a href="{{com.car_co}}">
+                                <span id="{{com.car_co}}jiage">￥{{com.car_money}}</span>
+                                </br>
+                                <span>数量：{{com.car_number}}</span>
+
+                            </a>
+                        </div>
+                        <div class=" col-xs-6 col-sm-6 col-md-6">
+                            <button id="queren" class="queren" onclick="queren('{{com.car_co}}')">确认收货</button>
+                        </div>
+                    </div>
+                {%endfor%}
+            {%else%}
+                <span>你还没有待收货</span>
+            {%endif%}
+
+        </div>
+    </div>
 </body>
 </html>
