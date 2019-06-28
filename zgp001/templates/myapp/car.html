@@ -1,7 +1,58 @@
 {% extends 'myapp/base.html'%}
-
+{% load static from staticfiles %}
+{%block js%}
+<link rel="stylesheet" type="text/css" href="{%static 'car/css/car.css'%}"/>
+<script src="{% static 'car/js/car.js' %}"
+            type="text/javascript" charset="utf-8"></script>
+{%endblock%}
 {% block main %}
-    <h1>aaaaaa</h1>
-
-
+    <div id="mainmain" >
+        {%if carlist%}
+            {%for com in carlist%}
+                <div class=" col-xs-1 col-sm-1 col-md-1" style="margin: 0;padding: 0">
+                    <div id="chosenco" onclick="chosenco('{{com.car_co}}')">
+                        {%if com.car_sele%}
+                            <span class="glyphicon glyphicon-ok" aria-hidden="true"  ></span>
+                        {%else%}
+                            <span ></span>
+                        {%endif%}
+                    </div>
+                </div>
+                <div id="mainmainleft" class=" col-xs-4 col-sm-4 col-md-4">
+                    <a href="" class="thumbnail">
+                    <img src="/{{com.car_image}}"/>
+                    </a>
+                </div>
+                <div id="mainmainright" class=" col-xs-7 col-sm-7 col-md-7">
+                    <a href="{{com.car_co}}">
+                                        {{com.co_brief_introduction}}
+                    </a>
+                    <div id="mainmainleftprice" class=" col-xs-6 col-sm-6 col-md-6">
+                        <a href="{{com.car_co}}">
+                            <span id="{{com.car_co}}jiage" style="font-size: 0.3rem;">￥{{com.car_money}}</span>
+                            <br />
+                        </a>
+                    </div>
+                    <div id="change" class=" col-xs-6 col-sm-6 col-md-6">
+                        <input type="button"  onclick="jianchange('{{com.car_co}}')" class="jianchange" value="-" />
+                        <span id="{{com.car_co}}">{{com.car_number}}</span>
+                        <input type="button" onclick="addchange('{{com.car_co}}')" class="addchange" value="+" />
+                    </div>
+            </div>
+            {%endfor%}
+        {%else%}
+            <span>你的购物车时空的</span>
+        {%endif%}
+    </div>
+<div id="jiesuan">
+    <div id="jiesuanname" class=" col-xs-3 col-sm-3 col-md-3">
+        <span>合计：</span>
+    </div>
+    <div id="jiesuanmoney" class=" col-xs-5 col-sm-5 col-md-5">
+        <span>￥{{maxpice}}</span>
+    </div>
+    <div id="jiesuanacc" class=" col-xs-4 col-sm-4 col-md-4" onclick="jiesuan()">
+        <span>去结算</span>
+    </div>
+</div>
 {% endblock main %}
