@@ -1,0 +1,30 @@
+#zh{
+    height: 2rem;
+    width:100%;
+    line-height: 2rem;
+}
+#nameerr{
+    color: red;
+    display: none;
+    position: absolute;
+    right:3rem;
+
+}
+#namelenerr{
+    color: red;
+    position: absolute;
+    right:5rem;
+    display: none;
+}
+#passerr{
+    color: red;
+    position: absolute;
+    right:5rem;
+    display: none;
+}
+#phoneerr{
+    color: red;
+    position: absolute;
+    right:1rem;
+    /*display: none;*/
+}
