@@ -25,14 +25,14 @@
 					<div class="row ">
 						<div class="col-xs-3 col-sm-3 col-md-3" id="titleimage">
 							<a href="" class="thumbnail">
-								<img class="img-circle" src="{%static 'mean/img/aaaa.jpg'%}" />
+								<img class="img-circle" src="/{{userimg}}" />
 							</a>
 						</div>
 						<div class="col-xs-6 col-sm-6 col-md-6 " id="titlemiddle">
 							<dl>
 								<dt>
 								<a href="{%url 'app:sign'%}">
-									未登录
+									{{username}}
 								</a>
 							</dt>
 								<dd>等级:0</dd>
@@ -58,7 +58,7 @@
 								<dd>待付款</dd>
 							</dl>
 						</a>
-						<a href="" class="col-xs-2 col-sm-2 col-md-2 thumbnail">
+						<a href="/toreceived/" class="col-xs-2 col-sm-2 col-md-2 thumbnail">
 							<dl>
 								<dt><img class="img-rounded" src=""/></dt>
 								<dd>待收货</dd>
@@ -117,14 +117,17 @@
 								<dd>我的订单</dd>
 							</dl>
 						</a>
-
 					</div>
 
 				</div>
 				<div id="maimmainbottom">
-
+					<div>
+                        <a href="/quite/">
+                            <button style="height: 1rem;width: 6rem;margin-top:1rem
+;">退出登录</button>
+                        </a>
+                    </div>
 				</div>
-
 			</div>
 		</div>
 		<footer>
