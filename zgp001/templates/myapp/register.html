@@ -1,18 +1,52 @@
+{% load static from staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>注册</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <script src="{% static 'base/js/jquery-3.3.1.min.js' %}"
+            type="text/javascript" charset="utf-8"></script>
+    <script src="{% static 'register/js/register.js'%}" type="text/javascript" charset="utf-8"></script>
+    <link href="{% static 'register/css/rejister.css' %}" type="text/css" rel="stylesheet">
 </head>
 <body>
-    <form>
-        账号： <input name="name"  placeholder="账号">
-        <br>
-        密码：<input type="password" name="password"  placeholder="密码">
-        <br>
-        电话号码： <input type="tel" name="phone" placeholder="电话号码">
-        <br>
-        <input type="button" name="sign" value="注册">
+    <form method="post" action="/register/" enctype="multipart/form-data">
+        <div id="zh">
+            {% csrf_token %}
+            <span>
+            账号：
+            </span>
+            <input name="name" id="username" placeholder="账号">
+            <span  id="namelenerr">账号过短</span>
+            <span id="nameerr">账号已被注册</span>
+        </div>
+
+        <div>
+            <span>
+                     密码：
+            </span>
+            <input  type="password" id="pass" name="password"  placeholder="密码6-15位">
+            <span  id="passerr">密码过短</span>
+        </div>
+
+        <div>
+            <span>
+                 电话号码：
+            </span>
+            <input type="tel" id="phton" name="phone" placeholder="电话号码">
+            <span  id="phoneerr">电话号码错误</span>
+        </div>
+
+        <div>
+            <span>
+                头像：
+            </span>
+            <input type="file" id="head" name="head">
+        </div>
+        <input type="submit" id="sign" disabled=true  name="sign" value="注册" onclick="reg()">
+
+        <a href="{%url 'app:mean'%}"> <input type="button" name="re" value="返回" ></a>
     </form>
 </body>
 </html>
