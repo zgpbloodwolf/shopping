@@ -13,6 +13,11 @@ function addchange(idis){
         var a = data['data']
         if(a == 'err')
         {
+
+        }
+        else if(a == 'error')
+        {
+            window.location.href ='/sign'
         }
         else
         {
@@ -27,6 +32,10 @@ function jianchange(idis){
        if(a == 'err')
         {
             $("#" + idis).text(0)
+        }
+        else if(a == 'error')
+        {
+            window.location.href ='/sign'
         }
         else
         {
