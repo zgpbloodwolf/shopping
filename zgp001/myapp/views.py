@@ -2,8 +2,11 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse
 # Create your views here.
 from django.http import JsonResponse
+from django.conf import settings
+import time
 import re
 from .models import Rotation,Menu,Commodity_kind,Commodity,Jdmsb,Fxhhb,Ppmsb,Hmzjb,Usercar,Order
+from .models import Userinform
 def main(request):
     #轮播图
     rotlist = Rotation.objects.all()
@@ -40,90 +43,104 @@ def ken(request):
 #商品列表
 def kenview(request):
     comp = request.GET.get('aa')
-    compids = Commodity_kind.objects.values()
-    for i in compids:
-        if i['ct_name'] == comp:
-            compID=i['ct_id']
+    compID = Commodity_kind.objects.filter(ct_name=comp).values()[0]['ct_id']
     list=[]
+    token = request.session.get('token')
+    if token !=None:
+        username = Userinform.objects.get(token = token).username
+    else:
+        username = '1'
     commoditylist = Commodity.objects.filter(co_kind=compID)
     for commodity in commoditylist:
-        if Usercar.objects.filter(car_co=commodity.co_id).exists():
-            number = Usercar.objects.filter(car_co=commodity.co_id).values()[0]['car_number']
+        if Usercar.objects.filter(car_co=commodity.co_id,car_user=username).exists():
+            number = Usercar.objects.filter(car_co=commodity.co_id,car_user=username).values()[0]['car_number']
             list.append([commodity.co_image, commodity.co_pice, commodity.co_brief_introduction, commodity.co_id, number])
         else:
             list.append([commodity.co_image,commodity.co_pice,commodity.co_brief_introduction,commodity.co_id,0])
     return JsonResponse({'data':list})
 #增加购物车
 def addchange(request):
-    car_id = int(request.GET.get('car_id'))
-    co = Commodity.objects.get(co_id=car_id)
-    if not Usercar.objects.filter(car_co=car_id).exists():
-        usercar = Usercar()
-        #用户
-        usercar.car_user = '111'
-        #商品id
-        usercar.car_co = car_id
-        #数量
-        usercar.car_number = 1
-        #选中状态
-        usercar.car_sele = 1
-        #价格
-        usercar.car_money = Commodity.objects.filter(co_id=car_id).values()[0]["co_pice"]
-        #图片
-        usercar.car_image = Commodity.objects.filter(co_id=car_id).values()[0]["co_image"]
-        #简介
-        usercar.co_brief_introduction=Commodity.objects.filter(co_id=car_id).values()[0]["co_brief_introduction"]
-        usercar.save()
-        co.co_number = co.co_number - 1
-        co.save()
-        return JsonResponse({"data":1})
-    else:
-        maxnumber = Commodity.objects.filter(co_id=car_id).values()[0]["co_number"]
-        number = Usercar.objects.filter(car_co=car_id).values()[0]["car_number"]
-        if maxnumber > 0:
-            number += 1
-            us = Usercar.objects.get(car_co=car_id)
+    token = request.session.get('token')
+    if token !=None:
+        user = Userinform.objects.get(token=token)
+        car_id = int(request.GET.get('car_id'))
+        co = Commodity.objects.get(co_id=car_id)
+        if not Usercar.objects.filter(car_co=car_id,car_user=user.username).exists():
+            usercar = Usercar()
+            #用户
+            usercar.car_user = user.username
+            #商品id
+            usercar.car_co = car_id
+            #数量
+            usercar.car_number = 1
+            #选中状态
+            usercar.car_sele = 1
+            #价格
+            usercar.car_money = Commodity.objects.filter(co_id=car_id).values()[0]["co_pice"]
+            #图片
+            usercar.car_image = Commodity.objects.filter(co_id=car_id).values()[0]["co_image"]
+            #简介
+            usercar.co_brief_introduction=Commodity.objects.filter(co_id=car_id).values()[0]["co_brief_introduction"]
+            usercar.save()
             co.co_number = co.co_number - 1
             co.save()
-            us.car_money=co.co_pice*number
-            us.car_number = number
-            us.save()
+            return JsonResponse({"data":1})
+        else:
+            maxnumber = Commodity.objects.filter(co_id=car_id).values()[0]["co_number"]
+            number = Usercar.objects.filter(car_co=car_id,car_user=user.username).values()[0]["car_number"]
+            if maxnumber > 0:
+                number += 1
+                us = Usercar.objects.get(car_co=car_id,car_user=user.username)
+                co.co_number = co.co_number - 1
+                co.save()
+                us.car_money=co.co_pice*number
+                us.car_number = number
+                us.save()
+                picelist = Usercar.objects.values()
+                maxpice = 0
+                for pice in picelist:
+                    if pice['car_sele']:
+                        maxpice += pice['car_money']
+                return JsonResponse({'data': number,'danjia':us.car_money,'zj':maxpice})
+            else:
+                return JsonResponse({'data': 'err'})
+    else:
+        return JsonResponse({'data': 'error'})
+#减少购物车
+def jianchange(request):
+    token = request.session.get('token')
+    if token != None:
+        user = Userinform.objects.get(token=token)
+        car_id = int(request.GET.get('car_id'))
+        if  Usercar.objects.filter(car_co=car_id,car_user=user.username).exists():
+            number = Usercar.objects.filter(car_co=car_id,car_user=user.username).values()[0]["car_number"]
+            us = Usercar.objects.get(car_co=car_id,car_user=user.username)
+            co = Commodity.objects.get(co_id=car_id)
+            number -= 1
+            if number > 0:
+                us.car_money = co.co_pice * number
+                us.car_number = number
+                us.save()
+            else:
+                us.delete()
+            co.co_number = co.co_number + 1
+            co.save()
             picelist = Usercar.objects.values()
             maxpice = 0
             for pice in picelist:
                 if pice['car_sele']:
                     maxpice += pice['car_money']
-            return JsonResponse({'data': number,'danjia':us.car_money,'zj':maxpice})
+            return JsonResponse({'data': number,'zj':maxpice,'danjia':us.car_money})
         else:
-            return JsonResponse({'data': 'err'})
-#减少购物车
-def jianchange(request):
-    car_id = int(request.GET.get('car_id'))
-    if  Usercar.objects.filter(car_co=car_id).exists():
-        number = Usercar.objects.filter(car_co=car_id).values()[0]["car_number"]
-        us = Usercar.objects.get(car_co=car_id)
-        co = Commodity.objects.get(co_id=car_id)
-        number -= 1
-        if number > 0:
-            us.car_money = co.co_pice * number
-            us.car_number = number
-            us.save()
-        else:
-            us.delete()
-        co.co_number = co.co_number + 1
-        co.save()
-        picelist = Usercar.objects.values()
-        maxpice = 0
-        for pice in picelist:
-            if pice['car_sele']:
-                maxpice += pice['car_money']
-        return JsonResponse({'data': number,'zj':maxpice,'danjia':us.car_money})
+            return JsonResponse({'data': 0})
     else:
-        return JsonResponse({'data': 0})
+        return JsonResponse({'data': 'error'})
 #购物车
 def car(request):
-    carlist = Usercar.objects.all()
-    picelist = Usercar.objects.values()
+    token = request.session.get('token')
+    username = Userinform.objects.get(token=token).username
+    carlist = Usercar.objects.filter(car_user=username)
+    picelist = Usercar.objects.filter(car_user=username).values()
     maxpice = 0
     for pice in picelist:
         if pice['car_sele']:
@@ -131,9 +148,10 @@ def car(request):
     return render(request,'myapp/car.html',{'title':'购物车','carlist':carlist,'maxpice':maxpice})
 #改变选择状态
 def chosenchange(request):
+    token = request.session.get('token')
+    username = Userinform.objects.get(token=token).username
     coid = int(request.GET.get('co_id'))
-    car_co = Usercar.objects.filter(car_co=coid).values()[0]['car_sele']
-    carlist = Usercar.objects.get(car_co=coid)
+    carlist = Usercar.objects.get(car_co=coid,car_user=username)
     if carlist.car_sele:
         carlist.car_sele = 0
     else:
@@ -143,7 +161,9 @@ def chosenchange(request):
 #选好物品结算
 def jiesuan(request):
     #购买商品列表
-    colist = Usercar.objects.filter(car_sele=1).values()
+    token = request.session.get['token']
+    username = Userinform.objects.get(token=token).username
+    colist = Usercar.objects.filter(car_sele=1,car_user=username).values()
     for co in colist:
         new_order = Order()
         new_order.car_user = co['car_user']
@@ -158,17 +178,88 @@ def jiesuan(request):
         de_co = Usercar.objects.get(car_co=co['car_co'])
         de_co.delete()
     return JsonResponse({'code':1})
-
+#我的
 def mean(request):
-    return render(request,'myapp/mean.html',{'title':'我的'})
+    username = request.session.get('username','未登录')
+    token = request.session.get('token')
+    if token !=None:
+        us = Userinform.objects.get(token=token)
+        userimg = us.user_head
+    else:
+        userimg=''
+    return render(request, 'myapp/mean.html', {'title': '我的', 'username': username, 'userimg': userimg})
+import os
+#注册
 def register(request):
-    return render(request, 'myapp/register.html')
+    if request.method == 'POST':
+        username = request.POST.get("name")
+        userpassword = request.POST.get('password')
+        userphone = request.POST.get('phone')
+        token = str(time.time())+username
+        user_head = request.FILES.get('head')
+        hepath =  './static/upfile/'+username+'.png'
+        with open(hepath,'wb') as f:
+            for ini in user_head.chunks():
+                f.write(ini)
+        user = Userinform()
+        user.username= username
+        user.userpassword = userpassword
+        user.userphone = userphone
+        user.token = token
+        user.user_head = hepath
+        user.save()
+        request.session['username']=username
+        request.session['token'] = token
+        return redirect('app:mean')
+
+    else:
+        return render(request, 'myapp/register.html')
+#登录
 def sign(request):
-    return render(request, 'myapp/sign.html')
+    if request.method == 'POST':
+        username = request.POST.get('name')
+        password = request.POST.get('password')
+        if Userinform.objects.filter(username=username):
+           us = Userinform.objects.get(username=username)
+           if us.userpassword == password:
+               us.token = str(time.time())+username
+               us.save()
+               request.session['username'] = username
+               request.session['token'] = us.token
+               return redirect('app:mean')
+           else:
+               pass
+        else:
+            pass
+        return render(request, 'myapp/sign.html',{'error':'登录失败'})
+    else:
+        return render(request, 'myapp/sign.html')
+#待收货
 def toreceived(request):
     torelist = Order.objects.filter(or_sele=0)
-    print(torelist)
     return render(request, 'myapp/toreceived.html',{'torelist':torelist})
+#确认收货
+def queren(request):
+    co_id = int(request.GET.get('co_id'))
+    co = Order.objects.get(car_co=co_id)
+    co.or_sele = 1
+    co.save()
+    return JsonResponse({'data':1})
+#用户验证
+def verusername(request):
+    username = request.POST.get('usrname')
+    if Userinform.objects.filter(username=username):
+        return JsonResponse({'data': '该用户已被注册', 'sta': 'error'})
+    else:
+        return JsonResponse({'data': '可以注册', 'sta': 'success'})
+from django.contrib.auth import logout
+def quite(request):
+    logout(request)
+    return redirect('app:mean')
+
+
+
+
 
 
 

@@ -78,13 +78,14 @@ class Hmzjb(models.Model):
     class Meta:
         db_table = 'hmzj'
 #用户信息
-class Userinf(models.Model):
+class Userinform(models.Model):
     username = models.CharField(max_length=20,primary_key=True)
     userpassword= models.CharField(max_length=15)
-    userphone = models.IntegerField()
+    userphone = models.CharField(max_length=11)
     token = models.CharField(max_length=50)
+    user_head= models.CharField(max_length=50)
     class Meta:
-        db_table = 'userin'
+        db_table = 'userinform'
 #购物车
 class Usercar(models.Model):
     car_user = models.CharField(max_length=20)

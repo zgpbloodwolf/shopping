@@ -13,6 +13,9 @@ urlpatterns = [
     url('^jianchange/$',views.jianchange,name='jianchange'),
     url('^chosenchange/$',views.chosenchange,name='chosenchange'),
     url('^jiesuan/$',views.jiesuan,name='jiesuan'),
-    url('^toreceived/$',views.toreceived,name='toreceived')
+    url('^toreceived/$',views.toreceived,name='toreceived'),
+    url('^queren/$',views.queren,name='queren'),
+    url('^verusername/$',views.verusername,name='verusername'),
+    url('^quite/$',views.quite,name='quite'),
     # url('main/[A-Za-z_0-9]{0.9}.jpg/$',views.pic)
 ]
